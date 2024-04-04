@@ -1,0 +1,150 @@
+let list = document.getElementById('list');
+    let filter = document.querySelector('.filter');
+    let count = document.getElementById('count');
+
+    let listProducts = [
+        {
+            id: 1,
+            name: 'Name product white-black',
+            price: 2600,
+            quantity: 0,
+            image: 'https://www.johnsonmarblequartz.in/jmq/images/products/engineered-quartz/312x312/zodiac-aqua-green.jpg',
+            nature: {
+                color: ['blue', 'black'],
+                size: ['S', 'M', 'L'],
+                type: 'T-shirt'
+            }
+        },
+        {
+            id: 2,
+            name: 'Name product white-black-grey',
+            price: 3000,
+            quantiy: 30,
+            image: 'https://www.johnsonmarblequartz.in/jmq/images/products/engineered-quartz/312x312/bianco-carrara.jpg',
+            nature: {
+                color: ['white', 'black', 'grey'],
+                size: ['S', 'M', 'L'],
+                type: 'Polo'
+            }
+        },
+        {
+            id: 3,
+            name: 'Name product black',
+            price: 2000,
+            quantiy: 30,
+            image: 'https://www.johnsonmarblequartz.in/jmq/images/products/engineered-quartz/312x312/calacatta-classic.jpg',
+            nature: {
+                color: ['white', 'brown'],
+                size: ['S', 'M', 'L'],
+                type: 'T-shirt'
+            }
+        },
+        {
+            id: 4,
+            name: 'Name product blue-black',
+            price: 4000,
+            quantiy: 30,
+            image: 'https://www.johnsonmarblequartz.in/jmq/images/products/engineered-quartz/312x312/nero-marquina.jpg',
+            nature: {
+                color: ['black', 'blue'],
+                size: ['S', 'M', 'L'],
+                type: 'T-shirt'
+            }
+        },
+        {
+            id: 5,
+            name: 'Name product brown',
+            price: 3200,
+            quantiy: 30,
+            image: 'https://www.johnsonmarblequartz.in/jmq/images/products/engineered-quartz/312x312/derby-white.jpg',
+            nature: {
+                color: ['brown','white'],
+                size: ['S', 'M', 'L'],
+                type: 'Polo'
+            }
+        },
+        {
+            id: 6,
+            name: 'Name product white-black',
+            price: 1000,
+            quantiy: 30,
+            image: 'https://www.johnsonmarblequartz.in/jmq/images/products/engineered-quartz/312x312/zodiac-light-blue.jpg',
+            nature: {
+                color: ['black', 'blue'],
+                size: ['S', 'M', 'L'],
+                type: 'Shirt'
+            }
+        },
+    
+    ];
+
+
+
+    let productFilter = listProducts;
+    showProduct(productFilter);
+    
+    filter.addEventListener('submit', function(event){
+        event.preventDefault();
+        let valueFilter = event.target.elements;
+        productFilter = listProducts.filter(item => {
+            // check category
+            if(valueFilter.category.value != ''){
+                if(item.nature.type != valueFilter.category.value){
+                    return false;
+                }
+            }
+            // check color
+            if(valueFilter.color.value != ''){
+                if(!item.nature.color.includes(valueFilter.color.value)){
+                    return false;
+                }
+            }
+            // check name
+            if(valueFilter.name.value != ''){
+                if(!item.name.includes(valueFilter.name.value)){
+                    return false;
+                }
+            }
+            // check min price
+            if(valueFilter.minPrice.value != ''){
+                if(item.price < valueFilter.minPrice.value){
+                    return false;
+                }
+            }
+            //  check max price
+            if(valueFilter.maxPrice.value != ''){
+                if(item.price > valueFilter.maxPrice.value){
+                    return false;
+                }
+            }
+    
+    
+            return true;
+        })
+        showProduct(productFilter);
+    })
+    function showProduct(productFilter){
+        count.innerText = productFilter.length;
+        list.innerHTML = '';
+        productFilter.forEach(item => {
+            let newItem = document.createElement('div');
+            newItem.classList.add('item');
+    
+            // create image
+            let newImage = new Image();
+            newImage.src = item.image;
+            newItem.appendChild(newImage);
+            // create name product
+            let newTitle = document.createElement('div');
+            newTitle.classList.add('title');
+            newTitle.innerText = item.name;
+            newItem.appendChild(newTitle);
+            // create price
+            let newPrice = document.createElement('div');
+            newPrice.classList.add('price');
+            newPrice.innerText = item.price.toLocaleString() + 'Rupees';
+            newItem.appendChild(newPrice);
+    
+            list.appendChild(newItem);
+        });
+    }

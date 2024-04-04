@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qwanto Products</title>
+    <link rel="stylesheet" href="/stylesheets/product.css">
+</head>
+<body>
+
+    <style>
+        
+.logo {
+  width: 116px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 62px;
+  width: 100%;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-weight: 600;
+  font-size: 15px;
+  border-bottom: 1px solid rgba(44, 45, 42, 0.25);
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color:#E6DECF;
+  z-index: 6;
+}
+@media (max-width: 575px) {
+  .header {
+    width: 100%;
+  }
+}
+.header-menu {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+@media screen and (max-width: 740px) {
+  .header-menu {
+    display: none;
+  }
+}
+.header-menu a:not(:first-child) {
+  margin-left: 30px;
+}
+.header .menu-icon {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  padding-left: 10px;
+}
+.header .menu-icon svg {
+  width: 22px;
+}
+.header-icons {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  padding-right:10px ;
+}
+.header-icons svg {
+  width: 18px;
+}
+.header-icons svg:not(:last-child) {
+  margin-right: 20px;
+}
+
+a, a:after {
+    color: black;
+    text-decoration: none;
+}
+
+    </style>
+
+    <div class="header">
+        <a class="menu-icon" href="/">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+          </svg>
+        </a>
+        <img class="logo" src="https://www.qwantoquartz.com/wp-content/uploads/2021/08/logo.png" />
+        <div class="header-menu">
+          <a href="/product">Products</a>
+          <a href="/">Gallery</a>
+          <a href="/login">Login</a>
+          <a href="mailto:realnikhileshrana@gmail.com">Contact</a>
+        </div>
+        <div class="header-icons">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path d="M437.02 330.98c-27.883-27.882-61.071-48.523-97.281-61.018C378.521 243.251 404 198.548 404 148 404 66.393 337.607 0 256 0S108 66.393 108 148c0 50.548 25.479 95.251 64.262 121.962-36.21 12.495-69.398 33.136-97.281 61.018C26.629 379.333 0 443.62 0 512h40c0-119.103 96.897-216 216-216s216 96.897 216 216h40c0-68.38-26.629-132.667-74.98-181.02zM256 256c-59.551 0-108-48.448-108-108S196.449 40 256 40s108 48.448 108 108-48.449 108-108 108z" />
+          </svg>
+        </div>
+      </div>
+      
+
+
+    <div class="container">
+        <form class="filter">
+            <div class="item">
+                <label>Category</label>
+                <select name="category">
+                    <option value="">---</option>
+                    <option value="T-shirt">Quartz TYPE-1</option>
+                    <option value="Shirt">Quartz TYPE-2</option>
+                    <option value="Polo">Quartz TYPE-3</option>
+                </select>
+            </div>
+            <div class="item">
+                <label>Color</label>
+                <select name="color">
+                    <option value="">---</option>
+                    <option value="white">white</option>
+                    <option value="black">black</option>
+                    <option value="grey">grey</option>
+                    <option value="blue">blue</option>
+                    <option value="brown">brown</option>
+                </select>
+            </div>
+            <div class="item">
+                <label>Name</label>
+                <input name="name" type="text">
+            </div>
+            <div class="item">
+                <label>Min Price</label>
+                <input name="minPrice" type="number">
+            </div>
+            <div class="item">
+                <label>Max Price</label>
+                <input name="maxPrice" type="number">
+            </div>
+            <div class="item submit">
+                <button>Search</button>
+            </div>
+        </form>
+        <div class="countResults">
+            Found <b id="count">5</b> results
+        </div>
+        <div id="list">
+            
+        </div>
+    </div>
+</body>
+<script src="/javascripts/product.js"></script>
+</html>
